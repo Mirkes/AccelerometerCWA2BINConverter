@@ -36,7 +36,6 @@ public class cwa2bin {
          *      Code field. If text contains spaces then all argument must be quoted:
          *      "deviceLocationCode:text with spaces".
          */
-
         if (args.length == 0) {
             System.out.println("Usage:\njava cwa2bin fileName arguments\n" +
                     "where:\nfileName is name of file to process. " +
@@ -44,6 +43,7 @@ public class cwa2bin {
                     "\ndeviceLocationCode:text contains text to include into" +
                     " Device Location Code field.\n If text contains spaces then all argument must be quoted:\n" +
                     " \"deviceLocationCode:text with spaces\"");
+            return;
         }
 
         // Set default values
@@ -53,12 +53,17 @@ public class cwa2bin {
             String[] ss = s.split(":");
             ss[0] = ss[0].toLowerCase();
             if ("devicelocationcode".equals(ss[0])) {
-                deviceLocationCode = ss[1];
+		if (ss.length>1)
+                    deviceLocationCode = ss[1];
+		else {
+                    System.out.println("If value of parameter 'devicelocationcode' contains spaces or other special symbols" +
+		    " then parameters must be quoted");
+		    return;
+		}
             }
         }
 
         // Search for files in accordance with specification
-        //ToDo
         //Create file and extract path and file name
         File f = new File(args[0]);
         String path = f.getParent();

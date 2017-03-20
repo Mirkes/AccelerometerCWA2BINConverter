@@ -24,3 +24,5 @@ Main assumption for conversion:
 4. Light measurements are the same for all block of measurements (Light measurements is written ones per block and in each observations in Bin file).
 5. In CWA file we consider frequency of measurements as a constant in each block. We resample measurements of x, y, and z acceleration from the observed frequency to the specified standard frequency by linear interpolation.
 6. Last fragment of cwa data with less than 300 resampled measurements is ignored because Bin file can contain pages with 300 measurements only.
+
+File cwa2bin.r contains simple wrapper of cwa2bin.class for R.
