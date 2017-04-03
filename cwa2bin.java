@@ -83,6 +83,7 @@ public class cwa2bin {
 
         for (String s : flist) {
             f = new File(path + s);
+            System.out.println("Test of the file "+path + s);
             if (!f.isFile() || !s.matches(regex))
                 continue;
             System.out.println("processing of the file "+path + s);
@@ -212,10 +213,6 @@ public class cwa2bin {
             int countOfMeasurements = (int)(interv * measurementFrequency / 1000);
             // Calculate number of complete pages
             pages = countOfMeasurements / 300;
-            // If we have less then 150 in reminder then we cut them and
-            // fill reminder of page by the repetition of the last measurement otherwise.
-            if (countOfMeasurements % 300 >= 150)
-                pages++;
             /**
              * The secold loop - calibration of frequency and writing bin file
              */
